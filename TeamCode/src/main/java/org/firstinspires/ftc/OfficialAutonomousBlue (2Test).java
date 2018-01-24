@@ -116,7 +116,7 @@ public class OfficialAutonomousBlue extends LinearOpMode {
                 //pivot robot 
                 while(runtime.seconds() <=1.7){ 
                 Motor1.setPower(0.1);
-                Motor2.setPower(0.1);
+                Motor2.setPower(0.1);//change to move direction rather than pivot
                 Motor3.setPower(0.1);
                 Motor4.setPower(0.1);
                 }
@@ -130,7 +130,7 @@ public class OfficialAutonomousBlue extends LinearOpMode {
             else if(colorSensor.blue()>0&&colorSensor.red()==0){
                 while(runtime.seconds() <=1.7){
                 Motor1.setPower(-0.1);
-                Motor2.setPower(-0.1);
+                Motor2.setPower(-0.1);//change to move direction rather than pivot
                 Motor3.setPower(-0.1);
                 Motor4.setPower(-0.1);
                 }
@@ -142,7 +142,18 @@ public class OfficialAutonomousBlue extends LinearOpMode {
         }
         SensorServo.setPosition(1);
         while ((runtime.seconds() <= 30)&&(opModeIsActive())&&(isOpModeActive == true)) {
-        }
+                
+                Motor1.setPower(0);//move towards pictograph
+                Motor2.setPower(0);
+                Motor3.setPower(0);
+                Motor4.setPower(0);
+            
+                Motor1.setPower(0);//pivot to scan
+                Motor2.setPower(0);
+                Motor3.setPower(0);
+                Motor4.setPower(0);
+            
+                //thats all for now...idk about the rest
         RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
             if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
 
@@ -158,7 +169,8 @@ public class OfficialAutonomousBlue extends LinearOpMode {
                     double tX = trans.get(0);
                     double tY = trans.get(1);
                     double tZ = trans.get(2);
-
+                    //this code may not get to run at the beginning of the 
+                    //automonous due to all the while loops
                     double rX = rot.firstAngle;
                     double rY = rot.secondAngle;
                     double rZ = rot.thirdAngle;
@@ -170,4 +182,5 @@ public class OfficialAutonomousBlue extends LinearOpMode {
 
             telemetry.update();
         }
+    }
     }
