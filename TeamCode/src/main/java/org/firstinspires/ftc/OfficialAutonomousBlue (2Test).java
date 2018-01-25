@@ -153,7 +153,7 @@ public class OfficialAutonomousBlue extends LinearOpMode {
                 Motor3.setPower(0);
                 Motor4.setPower(0);
             
-                //thats all for now...idk about the rest
+                
         RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
             if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
 
@@ -178,6 +178,20 @@ public class OfficialAutonomousBlue extends LinearOpMode {
             }
             else {
                 telemetry.addData("VuMark", "not visible");
+            }
+            if(vuMark == "LEFT"){
+                //requires distance sensor
+                //drive towards cryptobox 
+                //drive along the column separaters
+                //scan num of times distance sensor detects a spike(column)
+                //num should be 4, robot should stop at 4 
+                //inch back slowly so that robot is in the middle of 3 and 4
+                //bank gylph in
+                //celebrate
+            }else if(vuMark == "RIGHT"){
+                //num should be 2, robot should stop at 2
+            }else if(vuMark == "MIDDLE"){
+                //num should be 3, robot should stop at 3
             }
 
             telemetry.update();
