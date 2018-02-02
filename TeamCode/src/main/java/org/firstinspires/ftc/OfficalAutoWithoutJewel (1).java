@@ -473,14 +473,18 @@ while(runtime.seconds()<5){
         while ((runtime.seconds() <= 30)&&(opModeIsActive())&&(isOpModeActive == true)) {
             
             if(VuMark == "RIGHT"){
-                int numOfSpikes = 2;
+                int numOfSpikes = 0;
                 while(numOfSpikes < 2){
                     Motor4.setPower(-0.1);
                     Motor3.setPower(0.1);
                     telemetry.addData("Spike",numOfSpikes);
+                    telemetry.addData("DSensor", rangeSensor.getDistance(DistanceUnit.CM));
                     telemetry.update();
                     if(rangeSensor.getDistance(DistanceUnit.CM)<26){
-                        numOfSpikes++;
+                        while(rangeSensor.getDistance(DistanceUnit.CM)<26){
+                       //empty
+                        }
+                         numOfSpikes++;
                     }
                     Timer.reset();
                     while(Timer.seconds()<.3){
@@ -500,13 +504,17 @@ while(runtime.seconds()<5){
                 }
         
             }else if(VuMark == "LEFT"){
-                  int numOfSpikes = 2;
+                  int numOfSpikes = 0;
                 while(numOfSpikes < 2){
                     Motor4.setPower(0.1);
                     Motor3.setPower(-0.1);
                     telemetry.addData("Spike",numOfSpikes);
+                    telemetry.addData("DSensor", rangeSensor.getDistance(DistanceUnit.CM));
                     telemetry.update();
                     if(rangeSensor.getDistance(DistanceUnit.CM)<26){
+                        while(rangeSensor.getDistance(DistanceUnit.CM)<26){
+                       //empty
+                        }
                         numOfSpikes++;
                     }
                     Timer.reset();
@@ -526,13 +534,17 @@ while(runtime.seconds()<5){
                     }
                 }
             }else if(VuMark == "CENTER"){
-                int numOfSpikes = 1;
+                int numOfSpikes = 0;
                 while(numOfSpikes < 1){
                     Motor4.setPower(-0.1);
                     Motor3.setPower(0.1); //move until spike is detected
                     telemetry.addData("Spike", numOfSpikes);
+                    telemetry.addData("DSensor", rangeSensor.getDistance(DistanceUnit.CM));
                     telemetry.update();
                     if(rangeSensor.getDistance(DistanceUnit.CM)<26){
+                        while(rangeSensor.getDistance(DistanceUnit.CM)<26){
+                       //empty
+                        }
                         numOfSpikes++;
                     }
                     Timer.reset();
@@ -558,4 +570,3 @@ while(runtime.seconds()<5){
         }
     }
 }
-
