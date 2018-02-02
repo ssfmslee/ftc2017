@@ -291,7 +291,7 @@ public class OfficialAutonomousBlueA extends LinearOpMode {
             telemetry.addData("cm optical", "%.2f cm", rangeSensor.cmOptical());
             telemetry.addData("cm", "%.2f cm", rangeSensor.getDistance(DistanceUnit.CM));
             telemetry.update();
-            if(rangeSensor.getDistance(DistanceUnit.CM)>00){
+            if(rangeSensor.getDistance(DistanceUnit.CM)<00){
                 numOfSpikes++;
             }
             
@@ -323,3 +323,4 @@ public class OfficialAutonomousBlueA extends LinearOpMode {
         }
     }
 }
+
